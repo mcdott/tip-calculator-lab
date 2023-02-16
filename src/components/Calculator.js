@@ -47,12 +47,14 @@ function Calculator() {
           </div>
         </div>
 
-        <div className='tip-amount'>
+        <div className='tip-per-person'>
           <h2> Tip </h2>
+          {people > 1 ? <h3> per person </h3> : null}
           <p>{((bill * (tip_percent / 100)) / people).toFixed(2)}</p>
         </div>
-        <div className='total'>
+        <div className='total-per-person'>
           <h2> Total </h2>
+          {people > 1 ? <h3> per person </h3> : null}
           <p>{((bill * (1 + tip_percent / 100)) / people).toFixed(2)}</p>
         </div>
       </form>
