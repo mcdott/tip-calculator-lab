@@ -5,6 +5,7 @@ import "./Calculator.css";
 function Calculator() {
   const [bill, setBill] = useState(100);
   const [tip_percent, setTipPercent] = useState(15);
+  const [tip_amount, setTipAmount] = useState(15);
   const [people, setPeople] = useState(1);
 
   return (
@@ -31,6 +32,20 @@ function Calculator() {
             step={1}
             value={tip_percent}
             onChange={(e) => setTipPercent(e.target.value)}
+          />
+        </div>
+        <div className='tip-amount'>
+          <label>Tip $ </label>
+          <input
+            type='number'
+            min={0}
+            max={10000}
+            step={1}
+            value={tip_amount}
+            onChange={(e) => {
+              setTipAmount(e.target.value);
+              setTipPercent(((e.target.value / bill) * 100).toFixed(0));
+            }}
           />
         </div>
         <div className='people'>
